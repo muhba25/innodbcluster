@@ -3,7 +3,7 @@
 ## table of content:
 | Topics | Description |
 |--------|--------------------------|
-| [Lab 1](https://github.com/muhba25/mysql-innodbcluster) | MySQL Enterprise Server Installation (Innodb Cluster) |
+| [Lab 1](https://github.com/muhba25/mysql-innodbcluster) | MySQL Enterprise Server Installation|
 | [Lab 2](https://github.com/muhba25/mysql-innodbcluster) | MySQL Enterprise Backup |
 | [Lab 3](https://github.com/muhba25/mysql-innodbcluster) | MySQL Enterprise Audit |
 | [Lab 4](https://github.com/muhba25/mysql-innodbcluster) | Transparent Data Encryption (TDE)  |
