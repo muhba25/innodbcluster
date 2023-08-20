@@ -53,11 +53,40 @@ dba.createCluster("DC_Cluster");
 ## Set config Innodbcluster
 ```
 nano /etc/my.cnf
+log-error=/log/sql-innodbcluster1.log
+
+server-id=251 // server-id berbeda dengan server lain dan jg server_uuid pada datadir/auto.cnf
 binlog-format=ROW
-log-bin=/log/sql-innodbcluster1.log
+log-bin=/log/binlog-innodbcluster1.log
+binlog_transaction_dependency_tracking
 enforce_gtid_consistency=ON
 gtid_mode=ON
-server-id=251 // server-id berbeda dengan server lain dan jg server_uuid pada datadir/auto.cnf
+
+
+//Additional config for tuning (optional)
+innodb_buffer_pool_size //default 128 MB for tuning umumnya diset 75% dari total memory
+innodb_buffer_pool_instances //default 8
+sql_mode='' //set empty, default value ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+binlog_expire_logs_seconds=864000 (10 hari) // default 30 hari
+table_open_cache=20000  //default 4000
+max_connections=10000 //default 151
+wait_timeout=120 (2 menit) //default 28800 (8 jam)
+sort_buffer_size=2M //default 0
+read_buffer_size=1M //default 262144 (256 KB)
+read_rnd_buffer_size=8M // default 262144 (256 KB)
+join_buffer_size=1M // default 262144 (256 KB)
+bulk_insert_buffer_size=16M //default 8388608 (8 MB)
+log_timestamps=SYSTEM //default UTC
+max_allowed_packet=1G //default 67108864 (64 MB)
+slow_query_log=ON //default OFF
+long_query_time=5 // default 10
+thread_cache_size=512 //default 0
+plugin_load_add='thread_pool.so'
+plugin_load_add='group_replication.so'
+
+https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html
+https://dev.mysql.com/doc/refman/8.0/en/common-errors.html
+
 ```
 ## Add Instance
 ```
