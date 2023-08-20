@@ -67,6 +67,8 @@ var cluster = dba.getCluster()
 cluster.status()
 cluster.addInstance("innodbcluster2:3306")
 cluster.addInstance("innodbcluster3:3306")
+
+mysql -uroot -p -e "SELECT * FROM performance_schema.replication_group_members";
 ```
 
 ## Additional Setup router
