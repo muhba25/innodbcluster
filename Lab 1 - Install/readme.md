@@ -107,6 +107,7 @@ sudo yum -y localinstall mysql-router-commercial-*
 
 mkdir -p /router/mysqlrouter
 mysqlrouter --bootstrap cluster@innodbcluster1:3306 --directory /router/mysqlrouter --account=mysqlrouter --user=mysqlrouter --conf-base-port=3306 --name=MysqlRouterAplikasi1
+
 vi /router/mysqlrouter/mysqlrouter.conf 
 Add to mysqlrouter.conf on bootstrap-ro and bootstrap-rw
 max_connections=64000
