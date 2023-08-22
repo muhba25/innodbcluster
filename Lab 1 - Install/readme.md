@@ -29,7 +29,7 @@ systemctl disable firewalld
 
 ## set hostname on /etc/hosts
 ```
-example
+//example
 192.168.170.130 innodbcluster1
 192.168.170.131 innodbcluster2
 192.168.170.132 innodbcluster3
