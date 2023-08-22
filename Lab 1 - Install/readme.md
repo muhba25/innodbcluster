@@ -58,7 +58,7 @@ log-error=/log/sql-innodbcluster1.log
 server-id=251 // server-id berbeda dengan server lain dan jg server_uuid pada datadir/auto.cnf
 binlog-format=ROW
 log-bin=/log/binlog-innodbcluster1.log
-binlog_transaction_dependency_tracking
+binlog_transaction_dependency_tracking=WRITESET
 enforce_gtid_consistency=ON
 gtid_mode=ON
 
