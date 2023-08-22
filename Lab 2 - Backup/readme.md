@@ -13,15 +13,15 @@ mysqlbackup --version
 mysqlbackup -u cluster -p --socket=/var/lib/mysql/mysql.sock --datadir=/var/lib/mysql --backup-dir=/BACKUP/20230806/  --with-timestamp --compress --backup-image=fullbackup.img --skip-relaylog backup-to-image >> /BACKUP/20230806/backup.log
 
 // Jika ada TDE nya perlu ditambahkan
-mysqlbackup -u cluster -p --socket=/var/lib/mysql/mysql.sock --datadir=/var/lib/mysql --backup-dir=/BACKUP/20230814/  --with-timestamp --compress --backup-image=fullbackup.img --encrypt-password="password" --skip-relaylog backup-to-image >> /BACKUP/20230814/backup.log
+mysqlbackup -u cluster -p --socket=/var/lib/mysql/mysql.sock --datadir=/var/lib/mysql --backup-dir=/BACKUP/20230814/  --with-timestamp --compress --backup-image=fullbackup.img --encrypt-password="password" --skip-relaylog backup-to-image >> /BACKUP/20230806/backup.log
 ```
 
 ## Restore Database
 ```
-mysqlbackup -u cluster -p --socket=/var/lib/mysql/mysql.sock --datadir=/var/lib/mysql/ --backup-dir=/BACKUP/20230814/ --with-timestamp --uncompress --encrypt-password="password" --backup-image=/BACKUP/20230814/2023-08-14_01-05-08/fullbackup.img copy-back-and-apply-log >> /BACKUP/20230814/restore.log 2>&1 &
+mysqlbackup -u cluster -p --socket=/var/lib/mysql/mysql.sock --datadir=/var/lib/mysql/ --backup-dir=/BACKUP/20230814/ --with-timestamp --uncompress --backup-image=/BACKUP/20230806/2023-08-06_01-05-08/fullbackup.img copy-back-and-apply-log >> /BACKUP/20230814/restore.log 2>&1 &
 
 // Jika ada TDE nya perlu ditambahkan
-mysqlbackup -u cluster -p --socket=/var/lib/mysql/mysql.sock --datadir=/var/lib/mysql/ --backup-dir=/BACKUP/20230814/ --with-timestamp --uncompress --backup-image=/BACKUP/20230814/2023-08-14_01-05-08/fullbackup.img copy-back-and-apply-log >> /BACKUP/20230814/restore.log 2>&1 &
+mysqlbackup -u cluster -p --socket=/var/lib/mysql/mysql.sock --datadir=/var/lib/mysql/ --backup-dir=/BACKUP/20230806/ --with-timestamp --uncompress --encrypt-password="password" --backup-image=/BACKUP/20230806/2023-08-06_01-05-08/fullbackup.img copy-back-and-apply-log >> /BACKUP/20230806/restore.log 2>&1 &
 
 // change owner data directory mysql pada /var/lib/mysql/ 
 chown -R mysql:mysql /var/lib/mysql
