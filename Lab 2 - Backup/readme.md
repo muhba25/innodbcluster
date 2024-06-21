@@ -10,7 +10,7 @@ SELINUX=disabled
 ##  Backup Database
 ```
 mysqlbackup --version
-mysqlbackup -u cluster -p --socket=/var/lib/mysql/mysql.sock --datadir=/var/lib/mysql --backup-dir=/BACKUP/20230806/  --with-timestamp --compress --backup-image=fullbackup.img --skip-relaylog backup-to-image >> /BACKUP/20230806/backup.log
+mysqlbackup -u mbd1 -p --socket=/var/lib/mysql/mysql.sock --datadir=/data --backup-dir=/data_external/meb/20240229  --with-timestamp --compress --backup-image=/data_external/meb/20240229/fullbackup.img --skip-relaylog backup-to-image >> /BACKUP/20230806/backup.log
 
 // Jika ada TDE nya perlu ditambahkan
 mysqlbackup -u cluster -p --socket=/var/lib/mysql/mysql.sock --datadir=/var/lib/mysql --backup-dir=/BACKUP/20230814/  --with-timestamp --compress --backup-image=fullbackup.img --encrypt-password="password" --skip-relaylog backup-to-image >> /BACKUP/20230806/backup.log
@@ -32,7 +32,7 @@ show master status\G
 reset master;
 reset slave;
 
-cat cat /BACKUP/20230806/2023-08-07_06-34-55/meta/backup_gtid_executed.sql >>>> untuk melihat GTID terakhir pada saat backup
+cat /BACKUP/20230806/2023-08-07_06-34-55/meta/backup_gtid_executed.sql >>>> untuk melihat GTID terakhir pada saat backup
 SET @@GLOBAL.GTID_PURGED=<'diambil dari gtid_executed_backup.sql'>;
 SET @@GLOBAL.GTID_PURGED='808bb068-33a5-11ee-8c4b-000c293cc1a2:1-117,808bb800-33a5-11ee-8c4b-000c293cc1a2:1-11,c56e8f33-2cd2-11ee-95c8-000c293cc1a2:1-5';
 
