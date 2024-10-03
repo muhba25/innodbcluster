@@ -113,6 +113,7 @@ mysql> select * from pegawai;
 
 See content of table coba.pegawai without login to mysql (some values are in clear text):
 ```
+$ yum install binutils
 $ strings -a /var/lib/mysql/coba/pegawai.ibd
 ```
 
